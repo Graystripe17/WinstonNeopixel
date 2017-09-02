@@ -6,9 +6,10 @@
 
 from __future__ import division
 from neopixel import *
-from random import randint
-import math
 import time
+from random import randint
+from strandtest import wheel, rainbow, rainbowCycle, theaterChaseRainbow
+import math
 import threading
 
 # LED strip configuration:
@@ -16,7 +17,7 @@ LED_COUNT      = 150      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 5       # DMA channel to use for generating signal (try 5)
-LED_BRIGHTNESS = 170     # Set to 0 for darkest and 255 for brightest
+LED_BRIGHTNESS = 30     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 ICE_RGB = (178, 255, 240)
 ICE_SPAN = 11
@@ -156,6 +157,9 @@ if __name__ == '__main__':
 		comet(strip, BLUE_RGB, 30)
 		comet(strip, ORANGE_RGB, 30, False)
 
+                rainbow(strip)
+                rainbowCycle(strip)
+                # theaterChaseRainbow(strip)
 		"""
 
 		ribbon_erase_thread = threading.Thread(name='ribbon_erase', target=ribbonErase, args=(strip,))
